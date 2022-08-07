@@ -1,0 +1,15 @@
+{
+  "name": "first-app",
+  "version": "1.0.0",
+  "description": "my first back-end with mosh ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Oliyide Ibrahim",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^6.5.1",
+    "underscore": "^1.13.4"
+  }
+}
