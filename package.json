@@ -9,7 +9,13 @@
   "author": "Oliyide Ibrahim",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.18.1",
+    "joi": "^17.6.0",
     "mongoose": "^6.5.1",
+    "sumnum": "^1.0.0",
     "underscore": "^1.13.4"
+  },
+  "devDependencies": {
+    "jshint": "^2.13.5"
   }
 }
