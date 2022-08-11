@@ -58,6 +58,13 @@ app.put('/api/customers/:id', (req, res) => {
     }
 })
 
+app.delete(("/api/customers/:id"), (req, res) => {
+    const customer = customers.find((c) => c.id ===  parseInt(req.params.id))
+    if (!customer) return res.status(404).send("Customer with the given id not found")
+    const index = customers.indexOf(customer)
+    customers.splice(index, 1);
+    return res.status(200).send(customer);
+})
 
 function validateCustomer(customer){
     const schema = Joi.object({
