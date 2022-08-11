@@ -1,7 +1,16 @@
+const debug = require('debug')('exp:start')
+const config = require('config');
 const express = require('express');
 const Joi = require('joi');
 const app = express();
+const helmet = require('helmet');
+const morgan = require('morgan');
 const port = process.env.PORT || 5500
+
+app.use(morgan('tiny'))
+app.use(helmet())
+app.use(express.urlencoded({ extended: true}))
+app.use(express.static('outside'))
 
 const customers = [
     { id:1, name:'John', age:34},
@@ -10,6 +19,19 @@ const customers = [
     { id:4, name:'Kemi', age:18}
 ]
 
+// console.log(`NODE ENV: ${process.env.NODE_ENV}`)
+// console.log(`app get: ${app.get('env')}`) 
+
+
+if ( app.get('env') === 'development' ) {
+    app.use(morgan('tiny'))
+    debug('Morgan is enabled ...');
+}
+
+debug("Application name: " + config.get('name'));
+debug("Application host: " + config.get('mail.host'));
+debug("Application password: " + config.get('mail.password'));
+
 app.use(express.json());
 
 app.get('/', (req,res) => {
@@ -17,7 +39,7 @@ app.get('/', (req,res) => {
 })
 
 app.get('/api/customers', (req, res) => {
-    res.send(customers);
+    res.status(200).send(customers);
 })
 
 app.get('/api/customers/:id', (req, res) => {
