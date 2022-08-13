@@ -8,7 +8,6 @@ function callUserName( nameUser) {
 } 
 // const files = fs.readdirSync('./')
 // console.log(files)
-
 const logger = new Logger();  
 
 // const file = fs.readdir('.', (err, files) => {
